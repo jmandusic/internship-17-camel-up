@@ -31,29 +31,33 @@ export const initializeBoard = () => {
   return board;
 };
 
-export const initializeCamels = () => {
-  const camels = [
+export const initializeDice = () => {
+  const dice = [
     {
       id: 1,
-      color: "blue",
+      value: "?",
+      color: "#228ce6",
     },
     {
       id: 2,
-      color: "gold",
+      value: "?",
+      color: "#fab006",
     },
     {
       id: 3,
-      color: "green",
+      value: "?",
+      color: "#83c91d",
     },
     {
       id: 4,
+      value: "?",
       color: "white",
     },
     {
       id: 5,
-      color: "red",
+      value: "?",
+      color: "#fa5352",
     },
   ];
-
-  return camels;
+  return dice;
 };

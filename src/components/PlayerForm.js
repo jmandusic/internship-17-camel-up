@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Redirect } from "react-router";
 import { usePlayers } from "../providers/Players/hooks";
+import { Form } from "./index.styled";
 
 const PlayerForm = () => {
   const [players, setPlayers] = usePlayers();
@@ -44,7 +45,10 @@ const PlayerForm = () => {
       return;
     }
 
-    if (players.playerOne.name.trim().length < 3 || players.playerTwo.name.trim().length < 3) {
+    if (
+      players.playerOne.name.trim().length < 3 ||
+      players.playerTwo.name.trim().length < 3
+    ) {
       setErrorMessage("Player name requires min 3 characters");
       return;
     }
@@ -74,8 +78,8 @@ const PlayerForm = () => {
   }
 
   return (
-    <section>
-      <h1>Camel Up</h1>
+    <Form>
+      <h1>Welcome to the Camel Up !!!</h1>
 
       <form onSubmit={handleSubmit}>
         <label>Enter Player One name:</label>
@@ -92,10 +96,10 @@ const PlayerForm = () => {
           onChange={playerTwoNameHandler}
         />
 
-        <button type="submit">Start</button>
+        <button type="submit">Play</button>
+        {errorMessage && <span>{errorMessage}</span>}
       </form>
-      {errorMessage && <span>{errorMessage}</span>}
-    </section>
+    </Form>
   );
 };
 

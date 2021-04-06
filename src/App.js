@@ -1,4 +1,6 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+
+import Game from "./components/Game";
 import NotFound from "./components/NotFound";
 import PlayerForm from "./components/PlayerForm";
 import PlayersProvider from "./providers/Players";
@@ -12,7 +14,9 @@ const App = () => {
             <PlayerForm />
           </Route>
 
-          <Route exact path="/game"></Route>
+          <Route exact path="/game">
+            <Game />
+          </Route>
 
           <Route exact path="/404">
             <NotFound />
