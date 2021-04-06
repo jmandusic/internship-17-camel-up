@@ -1,14 +1,13 @@
-import { usePlayers } from "../providers/Players/hooks";
-import { useCells } from "../providers/Board/hooks";
-import { Board, Cell } from "./index.styled";
 import { Redirect } from "react-router";
-import Scorebox from "./Scorebox";
-import Dice from "./Dice";
-import Panel from "./Panel";
+
+import { usePlayers } from "../providers/Players/hooks";
+import Scorebox from "./Layout/Scorebox";
+import Dice from "./Layout/Dice";
+import Panel from "./Layout/Panel";
+import Board from "./Layout/Board";
 
 const Game = () => {
-  const [players, setPlayers] = usePlayers();
-  const [cells, setCells] = useCells();
+  const [players] = usePlayers();
 
   if (!players.playerOne.name || !players.playerTwo.name) {
     return <Redirect to="/" />;
@@ -18,11 +17,7 @@ const Game = () => {
     <>
       <Scorebox />
       <Dice />
-      <Board>
-        {cells.map((cell) => (
-          <Cell key={cell.id}>{cell.id + 1}</Cell>
-        ))}
-      </Board>
+      <Board />
       <Panel />
     </>
   );

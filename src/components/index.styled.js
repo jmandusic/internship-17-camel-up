@@ -83,7 +83,7 @@ export const ScoreBox = styled.div`
   }
 `;
 
-export const Board = styled.div`
+export const BoardContainer = styled.div`
   display: grid;
   grid-template-areas:
     ". . . . . . . ."

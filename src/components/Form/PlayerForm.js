@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Redirect } from "react-router";
-import { usePlayers } from "../providers/Players/hooks";
-import { Form } from "./index.styled";
+
+import { usePlayers } from "../../providers/Players/hooks";
+import { Form } from "../index.styled";
 
 const PlayerForm = () => {
   const [players, setPlayers] = usePlayers();

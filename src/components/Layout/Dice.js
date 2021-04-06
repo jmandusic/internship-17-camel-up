@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { initializeDice } from "../utils/defaults";
+import { initializeDice } from "../../utils/defaults";
 import OneDice from "./OneDice";
-import { DiceContainer } from "./index.styled";
+import { DiceContainer } from "../index.styled";
 
 const initialDice = {
   dice: initializeDice(),

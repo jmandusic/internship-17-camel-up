@@ -1,8 +1,8 @@
-import { usePlayers } from "../providers/Players/hooks";
-import { ScoreBox } from "./index.styled";
+import { usePlayers } from "../../providers/Players/hooks";
+import { ScoreBox } from "../index.styled";
 
 const Scorebox = () => {
-  const [players, setPlayers] = usePlayers();
+  const [players] = usePlayers();
 
   return (
     <ScoreBox>
