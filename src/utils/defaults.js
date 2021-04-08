@@ -36,24 +36,30 @@ export const initializeCamels = () => {
     {
       id: 1,
       color: "#228ce6",
+      position: 0,
     },
     {
       id: 2,
       color: "#fab006",
+      position: 0,
     },
     {
       id: 3,
       color: "#83c91d",
+      position: 0,
     },
     {
       id: 4,
       color: "white",
+      position: 0,
     },
     {
       id: 5,
       color: "#fa5352",
+      position: 0,
     },
   ];
+
   return camels;
 };
 

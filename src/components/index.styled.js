@@ -26,8 +26,9 @@ export const Form = styled.div`
     margin-bottom: 100px;
     width: 50%;
     height: 350px;
-    border: 2px solid #e6bf83;
+    border: 5px solid #e6bf83;
     border-radius: 12px;
+    box-shadow: 30px 30px 30px #a0793d;
   }
 
   label {
@@ -95,6 +96,10 @@ export const BoardContainer = styled.div`
 `;
 
 export const Cell = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 130px;
   height: 130px;
   border: 0.25px solid black;
@@ -114,7 +119,6 @@ export const DiceContainer = styled.div`
     margin: 10px;
     width: 80px;
     height: 80px;
-    background-color: red;
     border: none;
     border-radius: 12px;
     font-size: 50px;
@@ -146,7 +150,59 @@ export const PanelContainer = styled.div`
     cursor: pointer;
   }
 
-  button:hover {
+  button[disabled] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: not-allowed;
+  }
+
+  button[disabled]::after {
+    content: "X";
+    color: red;
+    font-size: 70px;
+  }
+
+  button:not([disabled]):hover {
     opacity: 0.6;
   }
+`;
+
+export const Camel = styled.div`
+  display: flex;
+  margin: 5px;
+  width: 15px;
+  height: 15px;
+  border: none;
+  border-radius: 50%;
+`;
+
+export const CellNumber = styled.div`
+  position: absolute;
+  top: 5px;
+  left: 5px;
+`;
+
+export const BetDice = styled.button`
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 12px;
+`;
+
+export const WinContainer = styled.div`
+  position: absolute;
+  top: 30vh;
+  left: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 90vw;
+  border: none;
+  border-radius: 12px;
+  background-color: #f4f4f4;
+
+  
 `;

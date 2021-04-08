@@ -1,7 +1,7 @@
 import { Redirect } from "react-router";
 
 import { usePlayers } from "../providers/Players/hooks";
-import Scorebox from "./Layout/Scorebox";
+import Scorebox from "./Layout/ScoreBox";
 import Dice from "./Layout/Dice";
 import Panel from "./Layout/Panel";
 import Board from "./Layout/Board";

@@ -14,7 +14,7 @@ const BoardProvider = ({ children }) => {
   const [cells, setCells] = useState(initialState);
 
   const value = {
-    state: { cells },
+    state: cells,
     setCells,
   };
 

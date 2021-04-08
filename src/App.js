@@ -1,9 +1,13 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
+import PlayersProvider from "./providers/Players";
+import BoardProvider from "./providers/Board";
+import DiceProvider from "./providers/Dice";
+import CamelProvider from "./providers/Camels";
+
 import Game from "./components/Game";
 import NotFound from "./components/NotFound";
-import PlayerForm from "./components/Form/PlayerForm";
-import PlayersProvider from "./providers/Players";
+import Form from "./components/Form";
 
 const App = () => {
   return (
@@ -11,11 +15,17 @@ const App = () => {
       <PlayersProvider>
         <Switch>
           <Route exact path="/">
-            <PlayerForm />
+            <Form />
           </Route>
 
           <Route exact path="/game">
-            <Game />
+            <BoardProvider>
+              <CamelProvider>
+                <DiceProvider>
+                  <Game />
+                </DiceProvider>
+              </CamelProvider>
+            </BoardProvider>
           </Route>
 
           <Route exact path="/404">
