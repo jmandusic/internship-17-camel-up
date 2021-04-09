@@ -6,23 +6,33 @@ import { useDice } from "../../../providers/Dice/hooks";
 
 import LegBet from "./LegBet";
 import RaceBet from "./RaceBet";
-
-import { panelLayoutOptions } from "../../../utils/defaults";
-import { PanelContainer } from "../../index.styled";
-import { roll } from "../../../actions/Roll";
-import { checkGameState } from "../../../utils/roll";
 import Win from "../Board/Win";
 
-const layout = panelLayoutOptions();
+import {
+  initializeCurrentCamels,
+  panelLayoutOptions,
+} from "../../../utils/defaults";
+import { roll } from "../../../actions/Roll";
+import { checkGameState } from "../../../utils/roll";
+import { legBetScoreIncrement } from "../../../utils/legBet";
+import { PanelContainer } from "../../index.styled";
+
+const initialState = {
+  layout: panelLayoutOptions(),
+  currentRoundCamels: initializeCurrentCamels(),
+};
 
 const Panel = () => {
-  const [option, setOption] = useState(layout.DEFAULT);
+  const [option, setOption] = useState(initialState.layout.DEFAULT);
   const [gameState, setGameState] = useState(false);
   const [turns, setTurns] = useState(0);
+  const [currentRoundCamels, setCurrentRoundCamels] = useState(
+    initialState.currentRoundCamels
+  );
 
   const [dice, setDice] = useDice();
   const [camels, setCamels] = useCamels();
-  const [, setPlayers] = usePlayers();
+  const [players, setPlayers] = usePlayers();
 
   useEffect(() => {
     setGameState(checkGameState(camels));
@@ -40,41 +50,36 @@ const Panel = () => {
         return newDice;
       });
 
+      legBetScoreIncrement(players, setPlayers, currentRoundCamels);
       setTurns(0);
     }
-  }, [turns, setDice]);
+  }, [turns, setDice, camels, currentRoundCamels, players, setPlayers]);
 
   const rollHandler = () => {
-    roll(setCamels, setDice, setPlayers, dice, turns);
+    roll(setCamels, setDice, setPlayers, setCurrentRoundCamels, dice, turns);
     setTurns((prevState) => prevState + 1);
   };
 
-  const legBetHandler = () => {
-    //legBet();
-    setOption(layout.LEG_BET);
-  };
-
-  const raceBetHandler = () => {
-    //raceBet();
-    setOption(layout.RACE_BET);
-  };
-
-  if (option === layout.LEG_BET) {
-    return <LegBet option={option} setOption={setOption} dice={dice} />;
+  if (option === initialState.layout.LEG_BET) {
+    return <LegBet setOption={setOption} />;
   }
 
-  if (option === layout.RACE_BET) {
-    return <RaceBet option={option} setOption={setOption} dice={dice} />;
+  if (option === initialState.layout.RACE_BET) {
+    return <RaceBet setOption={setOption} />;
   }
 
   return (
     <>
-      {gameState && <Win />}
+      {gameState && <Win currentRoundCamels={currentRoundCamels} />}
       {!gameState && (
         <PanelContainer>
-          <button onClick={legBetHandler}>Leg bet</button>
+          <button onClick={() => setOption(initialState.layout.LEG_BET)}>
+            Leg bet
+          </button>
           <button onClick={rollHandler}>Roll</button>
-          <button onClick={raceBetHandler}>Race bet</button>
+          <button onClick={() => setOption(initialState.layout.RACE_BET)}>
+            Race bet
+          </button>
         </PanelContainer>
       )}
     </>

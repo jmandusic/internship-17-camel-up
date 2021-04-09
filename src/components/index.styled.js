@@ -140,6 +140,10 @@ export const PanelContainer = styled.div`
   border-top-left-radius: 12px;
   background-color: #c8a165;
 
+  div {
+    display: flex;
+  }
+
   button {
     outline: none;
     padding: 20px;
@@ -203,6 +207,4 @@ export const WinContainer = styled.div`
   border: none;
   border-radius: 12px;
   background-color: #f4f4f4;
-
-  
 `;

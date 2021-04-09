@@ -3,12 +3,16 @@ export const initializePlayers = () => {
     name: "",
     current: true,
     score: 0,
+    legBet: [],
+    raceBet: [],
   };
 
   const secondPlayer = {
     name: "",
     current: false,
     score: 0,
+    legBet: [],
+    raceBet: [],
   };
 
   return [firstPlayer, secondPlayer];
@@ -106,7 +110,30 @@ export const initializeDice = () => {
       raceBet: false,
     },
   ];
+
   return dice;
+};
+
+export const initializeCurrentCamels = () => {
+  const camels = [
+    {
+      position: 0,
+    },
+    {
+      position: 0,
+    },
+    {
+      position: 0,
+    },
+    {
+      position: 0,
+    },
+    {
+      position: 0,
+    },
+  ];
+
+  return camels;
 };
 
 export const panelLayoutOptions = () => {

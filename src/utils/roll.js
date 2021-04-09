@@ -11,17 +11,6 @@ export const randomDiceSelector = (dice) => {
   }
 };
 
-export const camelSelector = (camels, dice) => {
-  let selectedCamel = null;
-  camels.forEach((camel) => {
-    if (camel.id === dice.id) {
-      selectedCamel = camel;
-    }
-  });
-
-  return selectedCamel;
-};
-
 export const positionIncrement = (camel, value) => {
   camel.position += value;
   return camel;

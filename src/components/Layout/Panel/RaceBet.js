@@ -1,9 +1,14 @@
+import { useDice } from "../../../providers/Dice/hooks";
 import { panelLayoutOptions } from "../../../utils/defaults";
 import { BetDice, PanelContainer } from "../../index.styled";
 
-const layout = panelLayoutOptions();
+const initialState = {
+  layout: panelLayoutOptions(),
+};
 
-const RaceBet = ({ option, setOption, dice }) => {
+const RaceBet = ({ setOption }) => {
+  const [dice, setDice] = useDice();
+  
   return (
     <PanelContainer>
       {dice.map((oneDice) => (

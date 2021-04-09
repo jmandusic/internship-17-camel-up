@@ -1,15 +1,26 @@
 import { useEffect } from "react";
+import { usePlayers } from "../../../providers/Players/hooks";
+import { legBetScoreIncrement } from "../../../utils/legBet";
 import { WinContainer } from "../../index.styled";
 
-const Win = ({ player }) => {
+const Win = ({ currentRoundCamels }) => {
+  const [players, setPlayers] = usePlayers();
+
   useEffect(() => {
-    const body = document.querySelector("body");
-    body.style.backgroundColor = "rgba(0, 0, 0, 0.65)"
+    legBetScoreIncrement(players, setPlayers, currentRoundCamels);
   }, []);
 
   return (
     <WinContainer>
-      <h1>Player won the game !!!</h1>
+      {players.playerOne.score > players.playerTwo.score && (
+        <h1>{players.playerOne.name} won the game !!!</h1>
+      )}
+      {players.playerOne.score < players.playerTwo.score && (
+        <h1>{players.playerTwo.name} won the game !!!</h1>
+      )}
+      {players.playerOne.score === players.playerTwo.score && (
+        <h1>It's draw.</h1>
+      )}
     </WinContainer>
   );
 };

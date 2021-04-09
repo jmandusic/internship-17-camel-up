@@ -1,11 +1,18 @@
+import { camelSelector, sortCamelsArray } from "../../utils/helpers";
 import {
-  camelSelector,
   positionIncrement,
   randomDiceSelector,
   randomValueSelector,
 } from "../../utils/roll";
 
-export const roll = (setCamels, setDice, setPlayers, dice, rollCount) => {
+export const roll = (
+  setCamels,
+  setDice,
+  setPlayers,
+  setCurrentRoundCamels,
+  dice,
+  rollCount
+) => {
   let value = randomValueSelector(1, 3);
   const diceValue = value;
 
@@ -21,7 +28,25 @@ export const roll = (setCamels, setDice, setPlayers, dice, rollCount) => {
 
     const selectedCamel = camelSelector(newCamels.camels, selectedDice);
     camelsArray[selectedCamel.id - 1] = positionIncrement(selectedCamel, value);
-    console.log(newCamels);
+
+    setCurrentRoundCamels((prevState) => {
+      let currentCamels = [...prevState];
+
+      if (currentCamels[0].position !== 0) {
+        for (let index = 0; index < currentCamels.length; index++) {
+          if (currentCamels[index] === selectedCamel) {
+            currentCamels.splice(index, 1);
+            break;
+          }
+        }
+      } else {
+        currentCamels.shift();
+      }
+
+      currentCamels.push(selectedCamel);
+      currentCamels = sortCamelsArray(currentCamels);
+      return currentCamels;
+    });
 
     return newCamels;
   });
