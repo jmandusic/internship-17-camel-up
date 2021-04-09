@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { usePlayers } from "../../../providers/Players/hooks";
 import { legBetScoreIncrement } from "../../../utils/legBet";
+import { raceBetScoreIncrement } from "../../../utils/raceBet";
 import { WinContainer } from "../../index.styled";
 
 const Win = ({ currentRoundCamels }) => {
@@ -8,6 +9,7 @@ const Win = ({ currentRoundCamels }) => {
 
   useEffect(() => {
     legBetScoreIncrement(players, setPlayers, currentRoundCamels);
+    raceBetScoreIncrement(players, setPlayers, currentRoundCamels);
   }, []);
 
   return (

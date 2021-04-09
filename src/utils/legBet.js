@@ -1,6 +1,5 @@
 export const legBetScoreIncrement = (players, setPlayers, camels) => {
   const playersArray = [players.playerOne, players.playerTwo];
-  console.log("radi");
 
   setPlayers((prevState) => {
     const newPlayers = { ...prevState };
