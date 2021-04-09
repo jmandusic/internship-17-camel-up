@@ -1,3 +1,7 @@
+import { gameColors } from "../constants";
+
+const colors = gameColors();
+
 export const initializePlayers = () => {
   const firstPlayer = {
     name: "",
@@ -35,31 +39,32 @@ export const initializeBoard = () => {
   return board;
 };
 
+
 export const initializeCamels = () => {
   const camels = [
     {
       id: 1,
-      color: "#228ce6",
+      color: colors.BLUE,
       position: 0,
     },
     {
       id: 2,
-      color: "#fab006",
+      color: colors.YELLOW,
       position: 0,
     },
     {
       id: 3,
-      color: "#83c91d",
+      color: colors.GREEN,
       position: 0,
     },
     {
       id: 4,
-      color: "white",
+      color: colors.WHITE,
       position: 0,
     },
     {
       id: 5,
-      color: "#fa5352",
+      color: colors.RED,
       position: 0,
     },
   ];
@@ -72,7 +77,7 @@ export const initializeDice = () => {
     {
       id: 1,
       value: "?",
-      color: "#228ce6",
+      color: colors.BLUE,
       rolled: false,
       legBet: false,
       raceBet: false,
@@ -80,7 +85,7 @@ export const initializeDice = () => {
     {
       id: 2,
       value: "?",
-      color: "#fab006",
+      color: colors.YELLOW,
       rolled: false,
       legBet: false,
       raceBet: false,
@@ -88,7 +93,7 @@ export const initializeDice = () => {
     {
       id: 3,
       value: "?",
-      color: "#83c91d",
+      color: colors.GREEN,
       rolled: false,
       legBet: false,
       raceBet: false,
@@ -96,7 +101,7 @@ export const initializeDice = () => {
     {
       id: 4,
       value: "?",
-      color: "white",
+      color: colors.WHITE,
       rolled: false,
       legBet: false,
       raceBet: false,
@@ -104,7 +109,7 @@ export const initializeDice = () => {
     {
       id: 5,
       value: "?",
-      color: "#fa5352",
+      color: colors.RED,
       rolled: false,
       legBet: false,
       raceBet: false,

@@ -16,6 +16,7 @@ import {
 } from "../../../utils/defaults";
 import { checkGameState } from "../../../utils/roll";
 import { legBetScoreIncrement } from "../../../utils/legBet";
+
 import { PanelContainer } from "../../index.styled";
 
 const initialState = {
