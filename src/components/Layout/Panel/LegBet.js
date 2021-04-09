@@ -1,9 +1,12 @@
-import { legBet } from "../../../actions/LegBet";
-import { useCamels } from "../../../providers/Camels/hooks";
 import { useDice } from "../../../providers/Dice/hooks";
+import { useCamels } from "../../../providers/Camels/hooks";
 import { usePlayers } from "../../../providers/Players/hooks";
+
+import { legBet } from "../../../actions/LegBet";
+
 import { panelLayoutOptions } from "../../../utils/defaults";
 import { camelSelector } from "../../../utils/helpers";
+
 import { BetDice, PanelContainer } from "../../index.styled";
 
 const initialState = {
@@ -23,18 +26,23 @@ const LegBet = ({ setOption }) => {
 
   return (
     <PanelContainer>
-      {dice.map((oneDice) => (
-        <BetDice
-          key={oneDice.id}
-          style={
-            !oneDice.legBet
-              ? { backgroundColor: `${oneDice.color}` }
-              : { backgroundColor: `black` }
-          }
-          disabled={oneDice.legBet === true}
-          onClick={() => legBetHandler(oneDice)}
-        />
-      ))}
+      <div>
+        {dice.map((oneDice) => (
+          <BetDice
+            key={oneDice.id}
+            style={
+              !oneDice.legBet
+                ? { backgroundColor: `${oneDice.color}` }
+                : { backgroundColor: `black` }
+            }
+            disabled={oneDice.legBet === true}
+            onClick={() => legBetHandler(oneDice)}
+          />
+        ))}
+      </div>
+      <button onClick={() => setOption(initialState.layout.DEFAULT)}>
+        Return to main panel
+      </button>
     </PanelContainer>
   );
 };

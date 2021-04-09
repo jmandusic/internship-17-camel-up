@@ -8,11 +8,12 @@ import LegBet from "./LegBet";
 import RaceBet from "./RaceBet";
 import Win from "../Board/Win";
 
+import { roll } from "../../../actions/Roll";
+
 import {
   initializeCurrentCamels,
   panelLayoutOptions,
 } from "../../../utils/defaults";
-import { roll } from "../../../actions/Roll";
 import { checkGameState } from "../../../utils/roll";
 import { legBetScoreIncrement } from "../../../utils/legBet";
 import { PanelContainer } from "../../index.styled";
@@ -73,13 +74,15 @@ const Panel = () => {
       {gameState && <Win currentRoundCamels={currentRoundCamels} />}
       {!gameState && (
         <PanelContainer>
-          <button onClick={() => setOption(initialState.layout.LEG_BET)}>
-            Leg bet
-          </button>
-          <button onClick={rollHandler}>Roll</button>
-          <button onClick={() => setOption(initialState.layout.RACE_BET)}>
-            Race bet
-          </button>
+          <div>
+            <button onClick={() => setOption(initialState.layout.LEG_BET)}>
+              Leg bet
+            </button>
+            <button onClick={rollHandler}>Roll</button>
+            <button onClick={() => setOption(initialState.layout.RACE_BET)}>
+              Race bet
+            </button>
+          </div>
         </PanelContainer>
       )}
     </>

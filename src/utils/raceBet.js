@@ -1,6 +1,5 @@
 export const raceBetScoreIncrement = (players, setPlayers, camels) => {
   const playersArray = [players.playerOne, players.playerTwo];
-  console.log(camels);
 
   setPlayers((prevState) => {
     const newPlayers = { ...prevState };

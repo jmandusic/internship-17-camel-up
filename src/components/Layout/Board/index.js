@@ -1,5 +1,6 @@
 import { useCells } from "../../../providers/Board/hooks";
 import { useCamels } from "../../../providers/Camels/hooks";
+
 import { BoardContainer, Camel, Cell, CellNumber } from "../../index.styled";
 
 const Board = () => {

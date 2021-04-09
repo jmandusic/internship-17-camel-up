@@ -1,4 +1,5 @@
 import { usePlayers } from "../../../providers/Players/hooks";
+
 import { ScoreBox } from "../../index.styled";
 
 const Scorebox = () => {

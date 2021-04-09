@@ -127,10 +127,11 @@ export const DiceContainer = styled.div`
 `;
 
 export const PanelContainer = styled.div`
-  position: absolute;
+  position: relative;
   left: calc((100% - 800px) / 2);
-  bottom: 0;
+  margin-top: 100px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   height: 300px;
@@ -142,6 +143,9 @@ export const PanelContainer = styled.div`
 
   div {
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
   }
 
   button {
@@ -197,13 +201,13 @@ export const BetDice = styled.button`
 export const WinContainer = styled.div`
   position: absolute;
   top: 30vh;
-  left: 5vw;
+  left: 15vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 40vh;
-  width: 90vw;
+  width: 70vw;
   border: none;
   border-radius: 12px;
   background-color: #f4f4f4;

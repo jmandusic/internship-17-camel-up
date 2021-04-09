@@ -10,15 +10,9 @@ export const roll = (
   setDice,
   setPlayers,
   setCurrentRoundCamels,
-  dice,
-  rollCount
+  dice
 ) => {
-  let value = randomValueSelector(1, 3);
-  const diceValue = value;
-
-  // if (rollCount !== 0) {
-  //   value /= 2;
-  // }
+  const value = randomValueSelector(1, 3);
 
   const selectedDice = randomDiceSelector(dice);
 
@@ -55,7 +49,7 @@ export const roll = (
     const newDice = { ...prevState };
 
     selectedDice.rolled = true;
-    selectedDice.value = diceValue;
+    selectedDice.value = value;
     newDice.dice[selectedDice.id - 1] = selectedDice;
 
     return newDice;
